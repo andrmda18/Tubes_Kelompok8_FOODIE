@@ -4,8 +4,12 @@ include "../dbconfig.php";
 // Variabel untuk pesan sukses atau error
 $message = "";
 
-// Ambil data kategori dari database
-$sqlStatement = "SELECT * FROM kategori";
+// Ambil data kategori dan jumlah resep dari database
+$sqlStatement = "
+    SELECT k.namaKategori, k.foto, COUNT(r.IdResep) AS jumlah_resep
+    FROM kategori k
+    LEFT JOIN tambahresep r ON k.idKategori = r.IdKategori
+    GROUP BY k.idKategori, k.namaKategori, k.foto";
 $result = mysqli_query($conn, $sqlStatement);
 
 if (isset($_POST['btnSimpan'])) {
@@ -24,7 +28,7 @@ if (isset($_POST['btnSimpan'])) {
             if (mysqli_query($conn, $sqlStatment)) {
                 $message = "Kategori berhasil ditambahkan!";
                 // Refresh data kategori
-                $result = mysqli_query($conn, "SELECT * FROM kategori");
+                $result = mysqli_query($conn, $sqlStatement);
             } else {
                 $message = "Error: " . mysqli_error($conn);
             }
@@ -102,6 +106,7 @@ if (isset($_POST['btnSimpan'])) {
                 <div class="komunitas-item">
                   <img src="../images/<?= htmlspecialchars($row['foto']) ?>" alt="Foto Kategori" />
                   <span><?= htmlspecialchars($row['namaKategori']) ?></span>
+                  <span><?= htmlspecialchars($row['jumlah_resep']) ?> Resep</span>
                   <button class="btn btn-success">Edit</button>
                   <button class="btn btn-danger">Hapus</button>
                 </div>

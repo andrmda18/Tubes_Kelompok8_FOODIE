@@ -6,7 +6,7 @@ $sqlStatment = "
     FROM tambahresep as t
     INNER JOIN login as l
     ON t.username = l.username
-    WHERE t.keterangan =''
+    WHERE t.keterangan IS NULL OR t.keterangan = ''
     ORDER BY t.IdResep DESC"; // Urutkan berdasarkan id terbaru
 $query = mysqli_query($conn, $sqlStatment);
 
