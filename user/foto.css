@@ -1,0 +1,296 @@
+/* Body dan Konten Utama */
+body, /* Selektor untuk elemen body */
+html {
+  /* Selektor untuk elemen html */
+  background-color: #d9d9d9; /* Warna latar belakang abu-abu terang */
+  font-family: "League Spartan", sans-serif; /* Jenis font untuk teks */
+  margin: 0; /* Hapus margin default */
+}
+
+/* Sidebar */
+.sidebar {
+  /* Selektor untuk elemen dengan kelas sidebar */
+  display: flex; /* Menggunakan Flexbox untuk tata letak */
+  flex-direction: column; /* Susunan elemen secara vertikal */
+  justify-content: space-between; /* Memberikan jarak antar elemen atas-bawah */
+  align-items: center; /* Pusatkan elemen secara horizontal */
+  width: 60px; /* Lebar tetap sidebar */
+  background-color: white; /* Warna latar putih */
+  position: fixed; /* Sidebar tetap di tempat meskipun halaman digulir */
+  height: 97%; /* Tinggi sidebar 97% dari tinggi layar */
+  margin: 10px; /* Jarak luar dari tepi layar */
+  border-radius: 10px; /* Sudut membulat untuk sidebar */
+}
+
+/* Gaya untuk ul di dalam sidebar */
+.sidebar ul {
+  /* Selektor untuk ul di dalam sidebar */
+  list-style-type: none; /* Menghapus bullet list */
+  margin: 0; /* Menghapus margin default */
+  padding: 0; /* Menghapus padding default */
+  width: 100%; /* Memenuhi lebar penuh sidebar */
+  display: flex; /* Menggunakan Flexbox */
+  flex-direction: column; /* Susunan elemen secara vertikal */
+  justify-content: flex-start; /* Semua elemen berada di atas */
+  align-items: center; /* Pusatkan elemen secara horizontal */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+/* Gambar logo */
+.sidebar ul li img {
+  /* Selektor untuk gambar dalam sidebar */
+  width: 40px; /* Lebar gambar 40px */
+  height: auto; /* Tinggi otomatis sesuai rasio */
+  margin-top: 5px; /* Jarak atas 5px */
+}
+
+/* Elemen list */
+.sidebar ul li {
+  /* Selektor untuk elemen li dalam sidebar */
+  display: flex; /* Flexbox untuk mengatur konten */
+  justify-content: center; /* Pusatkan konten secara horizontal */
+  align-items: center; /* Pusatkan konten secara vertikal */
+}
+
+/* Tautan dalam list */
+.sidebar ul li a {
+  /* Selektor untuk tautan dalam list */
+  text-decoration: none; /* Menghapus garis bawah tautan */
+  color: black; /* Warna teks hitam */
+}
+
+.sidebar ul li i {
+  /* Selektor untuk ikon dalam sidebar */
+  font-size: 30px; /* Ukuran ikon 30px */
+  color: #555; /* Warna abu-abu gelap */
+}
+
+/* Efek hover */
+.sidebar ul li a:hover {
+  /* Gaya tautan saat mouse di atasnya */
+  color: white; /* Warna teks berubah menjadi biru muda */
+}
+
+.sidebar ul li a:hover i {
+  /* Gaya ikon saat mouse di atas tautan */
+  color: #85cddb; /* Warna ikon berubah menjadi biru muda */
+}
+
+/* Main content */
+.main-content {
+  /* Selektor untuk konten utama */
+  background-color: #f8f9fa; /* Warna latar konten utama */
+  height: 97vh; /* Tinggi konten utama */
+  margin-top: 10px; /* Jarak atas dari tepi */
+  margin-bottom: 10px; /* Jarak bawah dari tepi */
+  margin-left: 80px; /* Jarak dari sidebar */
+  border-radius: 10px; /* Sudut membulat */
+  overflow-y: auto; /* Tambahkan scrollbar jika konten melebihi tinggi */
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.content {
+  width: 50%;
+  padding: 20px;
+}
+
+/* Gaya untuk gambar di dalam container-flex */
+.container img {
+  width: 50%; /* Mengatur lebar gambar menjadi 50% dari lebar kontainer */
+  max-width: 100%; /* Memastikan gambar tidak melebihi lebar yang ditentukan */
+  height: auto; /* Menjaga aspek rasio gambar agar tidak terdistorsi */
+  border-radius: 10px; /* Memberikan efek rounded pada gambar */
+}
+
+/* Menambahkan margin kiri pada konten teks untuk memberi jarak dengan gambar */
+.container .content {
+  margin-left: 50px; /* Memberi jarak antara gambar dan teks di kanan */
+}
+
+/* Gaya untuk judul (h3) di dalam konten */
+.container .content h3 {
+  margin-bottom: 15px; /* Memberikan jarak bawah antara judul dan teks deskripsi */
+  font-size: 1.8em; /* Mengatur ukuran font judul agar lebih besar */
+  font-weight: bold; /* Membuat font judul lebih tebal */
+}
+
+/* Gaya untuk paragraf (p) di dalam konten */
+.container .content p {
+  font-size: 1.1em; /* Mengatur ukuran font untuk paragraf */
+  line-height: 1.6; /* Memberikan jarak antar baris untuk memperbaiki keterbacaan */
+}
+.content a i {
+  margin-right: 10px;
+}
+
+.simpan-resep {
+  display: inline-block; /* Menjadikan elemen blok yang dapat diberi padding */
+  padding: 10px 20px; /* Memberikan padding agar tombol lebih besar */
+  font-size: 1.1em; /* Mengatur ukuran font */
+  border: 2px solid #85cddb; /* Menambahkan border biru */
+  border-radius: 5px; /* Sudut tombol sedikit melengkung */
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+  transition: all 0.3s ease; /* Efek transisi pada hover */
+  background-color: white; /* Ubah latar belakang menjadi biru saat hover */
+  color: #f09133; /* Ubah warna teks menjadi putih saat hover */
+}
+
+.simpan-resep:hover {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  color: white;
+}
+
+.more {
+  display: inline-block; /* Menjadikan elemen blok yang dapat diberi padding */
+  padding: 10px 20px; /* Memberikan padding agar tombol lebih besar */
+  font-size: 1.1em; /* Mengatur ukuran font */
+  border: 2px solid #85cddb; /* Menambahkan border biru */
+  border-radius: 5px; /* Sudut tombol sedikit melengkung */
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+  transition: all 0.3s ease; /* Efek transisi pada hover */
+  background-color: white; /* Ubah latar belakang menjadi biru saat hover */
+  color: #f09133; /* Ubah warna teks menjadi putih saat hover */
+}
+
+.more:hover {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  color: white;
+}
+
+.share {
+  display: inline-block; /* Menjadikan elemen blok yang dapat diberi padding */
+  padding: 10px 20px; /* Memberikan padding agar tombol lebih besar */
+  font-size: 1.1em; /* Mengatur ukuran font */
+  border: 2px solid #85cddb; /* Menambahkan border biru */
+  border-radius: 5px; /* Sudut tombol sedikit melengkung */
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+  transition: all 0.3s ease; /* Efek transisi pada hover */
+  background-color: white; /* Ubah latar belakang menjadi biru saat hover */
+  color: #f09133; /* Ubah warna teks menjadi putih saat hover */
+}
+
+.share:hover {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  color: white;
+}
+
+.download {
+  display: inline-block; /* Menjadikan elemen blok yang dapat diberi padding */
+  padding: 10px 20px; /* Memberikan padding agar tombol lebih besar */
+  font-size: 1.1em; /* Mengatur ukuran font */
+  border: 2px solid #85cddb; /* Menambahkan border biru */
+  border-radius: 5px; /* Sudut tombol sedikit melengkung */
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+  transition: all 0.3s ease; /* Efek transisi pada hover */
+  background-color: white; /* Ubah latar belakang menjadi biru saat hover */
+  color: #f09133;
+}
+
+.download:hover {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  color: white;
+}
+
+.content h3 {
+  color: #f09133;
+}
+
+.nav-resep {
+  display: flex; /* Menggunakan Flexbox untuk menyusun item */
+  flex-direction: column; /* Mengatur item dalam satu kolom */
+  align-items: stretch; /* Membuat semua item memenuhi lebar kontainer */
+  padding: 0; /* Menghapus padding default */
+  list-style-type: none; /* Menghapus bullet points */
+  margin: 0; /* Menghapus margin default */
+}
+
+.nav-resep li {
+  margin-bottom: 10px; /* Menambahkan jarak antar tombol vertikal */
+}
+
+.nav-resep li a {
+  display: flex; /* Menggunakan flex untuk menyusun konten di dalam tombol */
+  justify-content: center; /* Menjaga teks dan ikon rata tengah secara horizontal */
+  align-items: center; /* Menjaga teks dan ikon rata tengah secara vertikal */
+  width: 100%; /* Mengatur lebar tombol menjadi 100% agar mengisi ruang kontainer */
+  height: 60px; /* Ukuran tinggi tombol tetap */
+  padding: 10px 0; /* Memberikan padding atas-bawah agar tombol lebih besar */
+  font-size: 1.1em; /* Ukuran font tombol */
+  border: 2px solid #85cddb; /* Border berwarna biru */
+  border-radius: 5px; /* Sudut tombol sedikit melengkung */
+  text-decoration: none; /* Menghapus garis bawah pada link */
+  color: black; /* Warna teks hitam */
+  transition: all 0.3s ease; /* Efek transisi saat hover */
+}
+
+.nav-resep li a:hover {
+  background-color: #007bff; /* Warna latar belakang biru saat hover */
+  border-color: #007bff; /* Warna border biru saat hover */
+  color: #85cddb; /* Warna teks berubah saat hover */
+}
+
+.nav-resep li a i {
+  margin-right: 10px; /* Memberikan jarak antara ikon dan teks */
+}
+
+.content li i {
+  color: #f09133;
+}
+
+.dots {
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 15px; /* Jarak dari atas */
+  right: 25px; /* Jarak dari kanan */
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 50px; /* Mengatur jarak menu dari ikon titik tiga */
+  right: 15px; /* Menjaga menu di sisi kanan */
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  padding: 10px 0;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 10px 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background-color: #ddd;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}

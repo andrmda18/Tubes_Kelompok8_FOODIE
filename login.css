@@ -1,0 +1,98 @@
+body {
+  font-family: "league spartan", sans-serif;
+  color: #85cddb;
+}
+
+/* css berandab end */
+.col-2 {
+  border-right: 5px solid #d9d9d9; /* Border untuk kolom kiri */
+  padding: 0;
+  height: 100vh; /* Agar kolom kiri memenuhi tinggi viewport */
+}
+
+.col-10 {
+  border-left: 5px solid #d9d9d9; /* Border untuk kolom kanan */
+  padding: 20px;
+}
+
+/* Menyeting tinggi gambar agar memenuhi layar penuh secara vertikal */
+.full-height {
+  margin-top: 0%;
+  height: 100vh;
+  /*Tinggigambar100%viewportuntukmemenuhisetengahlayarvertikal*/
+  object-fit: cover;
+  /*Pastikangambartidakterdistorsi*/
+  width: 100%;
+}
+
+.form-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  color: white;
+  background-color: #85cddb;
+  border-color: #85cddb;
+}
+
+/* css login start */
+.custom-outline:focus {
+  outline: 8px solid rgba(133, 205, 219, 0.5); /* Outline dengan opasitas 50% */
+  box-shadow: 0 0 10px rgba(133, 205, 219, 0.5); /* Shadow dengan opasitas 50% */
+  outline: none !important;
+}
+
+.custom-outline.form-control {
+  outline: 1px solid rgba(133, 205, 219, 0.5); /* Outline default dengan opasitas 50% */
+  border-color: rgba(
+    133,
+    205,
+    219,
+    0.5
+  ) !important; /* Border default dengan opasitas 50% */
+}
+
+.custom-outline::placeholder {
+  color: rgba(240, 145, 51, 0.5); /* Placeholder dengan opasitas 50% */
+  font-family: "league spartan", sans-serif; /* Jenis font untuk placeholder */
+}
+
+.google-signup {
+  color: #4472c4;
+}
+
+.line-text-alternate {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #85cddb; /* Warna teks */
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.line-text-alternate::before,
+.line-text-alternate::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #f09133; /* Warna dan ketebalan garis */
+  margin: 0 10px; /* Jarak antara teks dan garis */
+}
+
+.google-signup a {
+  color: #4472c4;
+  text-decoration: none; /* Menghilangkan garis bawah pada teks tautan */
+}
+
+.google-signup a:hover {
+  color: blue;
+  text-decoration: underline; /* Menambahkan garis bawah saat di-hover */
+}
+
+/* css login end */
+
+/* register start */
+
+/* register end */

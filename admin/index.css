@@ -1,0 +1,191 @@
+/* Body dan Konten Utama */
+body,
+html {
+  background-color: #d9d9d9;
+  font-family: "League Spartan", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 60px;
+  background-color: white;
+  position: fixed;
+  height: 97%;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar ul li img {
+  width: 40px;
+  height: auto;
+  margin-top: 5px;
+}
+
+.sidebar ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar ul li i {
+  font-size: 30px;
+  color: #555;
+}
+
+.sidebar ul li a:hover {
+  color: white;
+}
+
+.sidebar ul li a:hover i {
+  color: #85cddb;
+}
+
+/* Main content */
+.main-content {
+  background-color: #f8f9fa;
+  height: 97vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 80px;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.title-header {
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
+  border-bottom: 3px solid #aaebf7;
+  padding-bottom: 10px;
+}
+
+/* Grid untuk card */
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Memungkinkan card untuk menyesuaikan posisi pada layar kecil */
+  gap: 16px; /* Menambahkan jarak antar card */
+}
+
+/* Card Styling */
+.card {
+  width: 100%; /* Pastikan card mengisi lebar kolom */
+  max-width: 180px; /* Membatasi ukuran maksimal card */
+  margin: 0 auto; /* Pusatkan card dalam kolom */
+  border-radius: 10px;
+  overflow: hidden; /* Untuk menghindari gambar yang keluar dari area card */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada card */
+}
+.card-img-top {
+  height: 150px; /* Membatasi tinggi gambar card */
+  object-fit: cover; /* Memastikan gambar tetap sesuai proporsinya */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px;
+}
+
+.circle-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.card h5 {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.card button {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* 5 card per baris pada layar besar */
+@media (min-width: 1200px) {
+  .col-md-2 {
+    flex: 0 0 18%; /* 5 card per baris */
+  }
+}
+
+/* 4 card per baris pada ukuran layar medium */
+@media (max-width: 1024px) {
+  .col-md-2 {
+    flex: 0 0 23%; /* 4 card per baris */
+  }
+}
+
+/* 2 card per baris pada ukuran layar kecil */
+@media (max-width: 768px) {
+  .col-md-2 {
+    flex: 0 0 45%; /* 2 card per baris */
+  }
+}
+
+/* 1 card per baris pada ukuran layar sangat kecil */
+@media (max-width: 576px) {
+  .col-md-2 {
+    flex: 0 0 100%; /* 1 card per baris */
+  }
+}
+
+.btn-danger {
+  background-color: #f09133;
+  border-color: #f09133;
+}
+
+.btn-success {
+  background-color: #aaebf7;
+  border-color: #aaebf7;
+}
+
+.btn-success:hover {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #d67b12;
+  border: 2px solid #d67b12;
+  color: white;
+}

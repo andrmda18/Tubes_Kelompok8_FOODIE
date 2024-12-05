@@ -1,0 +1,199 @@
+/* Body dan Konten Utama */
+body,
+html {
+  background-color: #d9d9d9;
+  font-family: "league spartan", sans-serif;
+  margin: 0;
+}
+
+.main-content {
+  background-color: #f8f9fa;
+  height: 97vh;
+  margin-top: 10px; /*jarak kontainer dari atas*/
+  margin-bottom: 10px; /*jarak kontainer dari bawah*/
+  border-radius: 10px 10px 10px 10px; /*efek cengkung*/
+  overflow-y: auto;
+}
+
+ul {
+  list-style-type: none; /* Menghapus bullet atau tanda list bawaan */
+  margin: 0; /* Menghapus margin bawaan dari elemen <ul> */
+  padding: 0; /* Menghapus padding bawaan dari elemen <ul> */
+  width: 15%; /* mengatur lebar container*/
+  background-color: white;
+  position: fixed; /* Sidebar tetap di posisi kiri layar saat menggulir halaman */
+  height: 97%; /* Membuat sidebar memenuhi tinggi layar penuh */
+  margin-left: 10px; /*jarak kontainer dari kiri*/
+  margin-top: 10px; /*jarak kontainer dari atas*/
+  margin-bottom: 10px; /*jarak kontainer dari bawah*/
+  border-radius: 10px 10px 10px 10px; /*efek cengkung*/
+}
+
+ul li img {
+  width: 40px;
+  height: auto;
+  padding-right: 10px;
+}
+
+/* Mengatur ikon agar sejajar secara horizontal dengan teks pada elemen navigasi */
+ul li {
+  display: flex; /* Menggunakan Flexbox untuk menyusun konten secara horizontal */
+  align-items: center; /* Menyelaraskan ikon dan teks di tengah secara vertikal */
+  padding: 5px; /* Memberikan ruang di dalam elemen navigasi */
+}
+
+ul li a {
+  text-decoration: none; /* Menghilangkan garis bawah tautan */
+  color: black;
+  flex-grow: 1; /* Membuat teks mengisi sisa ruang jika perlu */
+  display: flex;
+  align-items: center;
+}
+
+li a i {
+  margin-right: 10px; /* memberikan jarak antara teks dan ikon */
+}
+
+ul li i {
+  font-size: 20px; /* Ukuran ikon */
+  color: #555; /* Warna ikon */
+}
+
+/* Mengatur gaya untuk elemen <a> di dalam <li> */
+li a {
+  display: block; /* Mengubah elemen <a> menjadi elemen blok agar mengisi lebar penuh */
+  color: #000; /* Warna teks hitam */
+  padding: 5px 10px; /* Memberikan ruang dalam pada elemen tautan */
+  text-decoration: none; /* Menghapus garis bawah pada tautan */
+}
+
+/* Memberikan efek hover pada tautan yang tidak aktif */
+li a:hover:not(.active) {
+  /* Mengubah warna latar menjadi abu-abu gelap saat hover */
+  color: #85cddb; /* Mengubah warna teks menjadi putih saat hover */
+}
+
+li a:hover i {
+  color: #85cddb; /*efek hover ikon*/
+}
+
+.card-img-top {
+  width: 100%; /* Gambar akan menyesuaikan lebar card */
+  height: auto; /* Menjaga proporsi gambar */
+  object-fit: cover; /* Memotong gambar agar pas dalam card */
+}
+
+.card {
+  border-color: #aaebf7;
+  border-width: 5px; /* border 5px all sides */
+  height: 450px; /* Tentukan tinggi tetap untuk card */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari batas card */
+}
+
+.card-img-container {
+  height: 300px; /* Tentukan tinggi tetap untuk gambar */
+  overflow: hidden; /* Menyembunyikan gambar yang keluar dari area */
+}
+
+.card-img-container img {
+  width: 100%; /* Memastikan gambar mengisi lebar container */
+  height: 100%; /* Memastikan gambar mengisi tinggi container */
+  object-fit: cover; /* Gambar akan terpotong dan tetap menjaga proporsi */
+}
+
+.card-body {
+  flex-grow: 1;
+  padding: 10px; /* Memberi ruang di dalam card */
+}
+
+.rekomen {
+  /* background-color: black; */
+  border-color: #aaebf7;
+  border-width: 5px 5px 5px 5px; /* top, right, bottom, left */
+  background-color: #aaebf7;
+}
+
+.card-rekomen {
+  padding: 10px;
+}
+
+.rekomendasi-section p {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.circle-img {
+  width: 35px; /* Ukuran lebar gambar */
+  height: 35px; /* Ukuran tinggi gambar (harus sama dengan lebar untuk hasil bulat) */
+  border-radius: 50%; /* Membuat sudut gambar menjadi bulat */
+  object-fit: cover; /* Memastikan gambar tetap proporsional */
+  border: 2px solid #f09133; /* (Opsional) Tambahkan border untuk tampilan */
+  margin-bottom: 10px;
+}
+
+.extra-text {
+  font-size: 12px; /* Ukuran teks tambahan di kanan */
+  color: black; /* Warna teks */
+}
+
+.username {
+  font-size: 14px; /* Ukuran teks username */
+  color: black; /* Warna teks */
+  font-weight: bold; /* Menebalkan teks */
+}
+
+.icon-color {
+  color: black;
+  font-weight: bold;
+}
+
+/* Gambar dan Ikon */
+.position-relative {
+  position: relative; /* Membuat konteks posisi untuk elemen anak */
+}
+
+/* Styling untuk ikon play button */
+.play-button {
+  font-size: 50px; /* Ukuran ikon */
+  color: rgba(255, 255, 255, 0.8); /* Warna ikon putih transparan */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Pusatkan ikon */
+  cursor: pointer; /* Menambahkan efek pointer pada hover */
+}
+
+/* Styling untuk durasi */
+.duration {
+  background-color: rgba(0, 0, 0, 0.7); /* Latar belakang hitam transparan */
+  color: #fff; /* Warna teks putih */
+  font-size: 14px; /* Ukuran teks */
+  padding: 2px 6px; /* Padding teks */
+  border-radius: 5px; /* Membuat sudut melengkung */
+  position: absolute;
+  bottom: 10px; /* Berada di sudut kanan bawah */
+  right: 10px;
+}
+
+.custom-footer {
+  background-color: #aaebf7;
+  color: #f09133;
+  text-decoration: none;
+}
+
+.custom-link {
+  color: black; /* Warna teks normal */
+  text-decoration: none; /* Tanpa garis bawah saat normal */
+}
+
+.custom-link:hover {
+  color: #f09133;
+  /*Mengubahwarnateksmenjadibirusaatdihover*/
+  text-decoration: underline;
+  /*Menambahkangarisbawahsaatdihover*/
+  text-decoration-color: #f09133;
+  /* Warna garis bawah biru */
+  -moz-text-decoration-color: #f09133;
+}

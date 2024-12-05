@@ -1,0 +1,204 @@
+/* Body dan Konten Utama */
+body, /* Selektor untuk elemen body */
+html { /* Selektor untuk elemen html */
+  background-color: #d9d9d9; /* Warna latar belakang abu-abu terang */
+  font-family: "League Spartan", sans-serif; /* Jenis font untuk teks */
+  margin: 0; /* Hapus margin default */
+}
+
+/* Sidebar */
+.sidebar { /* Selektor untuk elemen dengan kelas sidebar */
+  display: flex; /* Menggunakan Flexbox untuk tata letak */
+  flex-direction: column; /* Susunan elemen secara vertikal */
+  justify-content: space-between; /* Memberikan jarak antar elemen atas-bawah */
+  align-items: center; /* Pusatkan elemen secara horizontal */
+  width: 60px; /* Lebar tetap sidebar */
+  background-color: white; /* Warna latar putih */
+  position: fixed; /* Sidebar tetap di tempat meskipun halaman digulir */
+  height: 97%; /* Tinggi sidebar 97% dari tinggi layar */
+  margin: 10px; /* Jarak luar dari tepi layar */
+  border-radius: 10px; /* Sudut membulat untuk sidebar */
+}
+
+/* Gaya untuk ul di dalam sidebar */
+.sidebar ul { /* Selektor untuk ul di dalam sidebar */
+  list-style-type: none; /* Menghapus bullet list */
+  margin: 0; /* Menghapus margin default */
+  padding: 0; /* Menghapus padding default */
+  width: 100%; /* Memenuhi lebar penuh sidebar */
+  display: flex; /* Menggunakan Flexbox */
+  flex-direction: column; /* Susunan elemen secara vertikal */
+  justify-content: flex-start; /* Semua elemen berada di atas */
+  align-items: center; /* Pusatkan elemen secara horizontal */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+/* Gambar logo */
+.sidebar ul li img { /* Selektor untuk gambar dalam sidebar */
+  width: 40px; /* Lebar gambar 40px */
+  height: auto; /* Tinggi otomatis sesuai rasio */
+  margin-top: 5px; /* Jarak atas 5px */
+}
+
+/* Elemen list */
+.sidebar ul li { /* Selektor untuk elemen li dalam sidebar */
+  display: flex; /* Flexbox untuk mengatur konten */
+  justify-content: center; /* Pusatkan konten secara horizontal */
+  align-items: center; /* Pusatkan konten secara vertikal */
+}
+
+/* Tautan dalam list */
+.sidebar ul li a { /* Selektor untuk tautan dalam list */
+  text-decoration: none; /* Menghapus garis bawah tautan */
+  color: black; /* Warna teks hitam */
+}
+
+.sidebar ul li i { /* Selektor untuk ikon dalam sidebar */
+  font-size: 30px; /* Ukuran ikon 30px */
+  color: #555; /* Warna abu-abu gelap */
+}
+
+/* Efek hover */
+.sidebar ul li a:hover { /* Gaya tautan saat mouse di atasnya */
+  color: #85cddb; /* Warna teks berubah menjadi biru muda */
+}
+
+.sidebar ul li a:hover i { /* Gaya ikon saat mouse di atas tautan */
+  color: #85cddb; /* Warna ikon berubah menjadi biru muda */
+}
+
+
+
+
+
+/* Main content */
+.main-content { /* Selektor untuk konten utama */
+  background-color: #f8f9fa; /* Warna latar konten utama */
+  height: 97vh; /* Tinggi konten utama */
+  margin-top: 10px; /* Jarak atas dari tepi */
+  margin-bottom: 10px; /* Jarak bawah dari tepi */
+  margin-left: 80px; /* Jarak dari sidebar */
+  border-radius: 10px; /* Sudut membulat */
+  overflow-y: auto; /* Tambahkan scrollbar jika konten melebihi tinggi */
+}
+
+/* Header container */
+.header-container { /* Selektor untuk wadah header */
+  display: flex; /* Flexbox untuk tata letak */
+  justify-content: center; /* Pusatkan item secara horizontal */
+  align-items: center; /* Pusatkan item secara vertikal */
+  border-bottom: 1px solid #ddd; /* Garis bawah header */
+  padding: 10px 0; /* Padding atas dan bawah 10px */
+  max-width: 100%; /* Pastikan kontainer tidak melebihi lebar layar */
+  overflow: hidden; /* Sembunyikan konten yang keluar dari kontainer */
+}
+
+/* Gaya item dalam header */
+.header-item { /* Selektor untuk setiap elemen header */
+  position: relative; /* Membuat elemen bisa memiliki elemen pseudo */
+  cursor: pointer; /* Tampilkan kursor pointer untuk interaksi */
+  text-align: center; /* Teks rata tengah */
+  padding: 10px 15px; /* Padding dalam elemen */
+  flex: 1; /* Membagi ruang secara merata */
+}
+
+.header-text { /* Selektor untuk teks dalam header */
+  font-size: 16px; /* Ukuran font */
+  font-weight: normal; /* Berat font default */
+  color: #333; /* Warna teks abu-abu gelap */
+  display: inline-block; /* Teks tampil dalam baris */
+}
+
+/* Garis animasi */
+.header-item::before { /* Pseudo-elemen sebelum item header */
+  content: ""; /* Konten kosong */
+  position: absolute; /* Posisikan relatif terhadap item */
+  top: 100%; /* Posisi di bawah item */
+  left: 50%; /* Pusatkan secara horizontal */
+  width: 0; /* Lebar awal 0 */
+  height: 3px; /* Tinggi garis */
+  background-color: #f09133; /* Warna garis oranye */
+  transition: width 0.3s ease-in-out; /* Animasi transisi lebar */
+  margin-left: -50%; /* Pusatkan garis di tengah elemen */
+}
+
+.header-item:hover::before { /* Gaya garis saat mouse di atas item */
+  width: 50vw; /* Lebar garis setengah layar */
+}
+
+.header-item.hover .header-text { /* Teks yang digarisbawahi */
+  font-weight: bold; /* Tebalkan teks */
+  color: #f09133; /* Warna teks oranye */
+}
+
+.header-text:hover { /* Teks saat mouse di atasnya */
+  font-weight: bold; /* Tebalkan teks */
+  color: #f09133; /* Ubah warna teks menjadi oranye */
+}
+
+/* Gaya grid item */
+.grid-item:hover { /* Gaya item grid saat hover */
+  background-color: #85cddb; /* Warna latar biru muda */
+}
+
+.grid-item { /* Selektor untuk item grid */
+  background-color: #aaebf7; /* Warna latar biru terang */
+  border-radius: 10px; /* Sudut membulat */
+  overflow: hidden; /* Sembunyikan konten keluar dari grid */
+  padding: 10px; /* Padding dalam item */
+  text-align: center; /* Teks rata tengah */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+  position: relative; /* Untuk elemen dengan posisi absolut di dalamnya */
+  height: 300px; /* Tinggi tetap item */
+  position: relative;
+}
+
+.grid-item img { /* Selektor untuk gambar dalam item grid */
+  width: 100%; /* Gambar memenuhi lebar item */
+  height: 180px; /* Tinggi tetap gambar */
+  object-fit: cover; /* Isi gambar tanpa mengubah proporsi */
+  object-position: center; /* Pusatkan gambar */
+  border-radius: 8px; /* Sedikit membulatkan gambar */
+}
+
+.grid-item .duration {
+  background-color: rgba(0, 0, 0, 0.7); /* Latar belakang hitam transparan */
+  color: #fff; /* Warna teks putih */
+  font-size: 14px; /* Ukuran teks */
+  padding: 2px 6px; /* Padding teks */
+  border-radius: 5px; /* Membuat sudut melengkung */
+  position: absolute;
+  bottom: 10px; /* Berada di sudut kanan bawah */
+  right: 10px;
+}
+
+/* Styling untuk ikon play button */
+.grid-item .play-button {
+  font-size: 50px; /* Ukuran ikon */
+  color: rgba(255, 255, 255, 0.8); /* Warna ikon putih transparan */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Pusatkan ikon */
+  cursor: pointer; /* Menambahkan efek pointer pada hover */
+}
+
+.grid-item .info { /* Selektor untuk informasi dalam grid */
+  margin-top: 10px; /* Jarak atas dari gambar */
+}
+
+.grid-item .info h5 { /* Selektor untuk judul informasi */
+  font-size: 16px; /* Ukuran font besar */
+  font-weight: bold; /* Teks tebal */
+  margin: 0; /* Menghapus margin default */
+}
+
+.grid-item .info p { /* Selektor untuk deskripsi dalam informasi */
+  font-size: 14px; /* Ukuran font */
+  color: #666; /* Warna teks abu-abu */
+  margin: 0; /* Menghapus margin default */
+}
+
+span i{
+  margin-right: 10px;
+}

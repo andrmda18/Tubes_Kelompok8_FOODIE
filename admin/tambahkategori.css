@@ -1,0 +1,197 @@
+/* Body dan Konten Utama */
+body, /* Selektor untuk elemen body */
+html {
+  /* Selektor untuk elemen html */
+  background-color: #d9d9d9; /* Warna latar belakang abu-abu terang */
+  font-family: "League Spartan", sans-serif; /* Jenis font untuk teks */
+  margin: 0; /* Hapus margin default */
+}
+
+/* Sidebar */
+.sidebar {
+  /* Selektor untuk elemen dengan kelas sidebar */
+  display: flex; /* Menggunakan Flexbox untuk tata letak */
+  flex-direction: column; /* Susunan elemen secara vertikal */
+  justify-content: space-between; /* Memberikan jarak antar elemen atas-bawah */
+  align-items: center; /* Pusatkan elemen secara horizontal */
+  width: 60px; /* Lebar tetap sidebar */
+  background-color: white; /* Warna latar putih */
+  position: fixed; /* Sidebar tetap di tempat meskipun halaman digulir */
+  height: 97%; /* Tinggi sidebar 97% dari tinggi layar */
+  margin: 10px; /* Jarak luar dari tepi layar */
+  border-radius: 10px; /* Sudut membulat untuk sidebar */
+}
+
+/* Gaya untuk ul di dalam sidebar */
+.sidebar ul {
+  /* Selektor untuk ul di dalam sidebar */
+  list-style-type: none; /* Menghapus bullet list */
+  margin: 0; /* Menghapus margin default */
+  padding: 0; /* Menghapus padding default */
+  width: 100%; /* Memenuhi lebar penuh sidebar */
+  display: flex; /* Menggunakan Flexbox */
+  flex-direction: column; /* Susunan elemen secara vertikal */
+  justify-content: flex-start; /* Semua elemen berada di atas */
+  align-items: center; /* Pusatkan elemen secara horizontal */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+/* Gambar logo */
+.sidebar ul li img {
+  /* Selektor untuk gambar dalam sidebar */
+  width: 40px; /* Lebar gambar 40px */
+  height: auto; /* Tinggi otomatis sesuai rasio */
+  margin-top: 5px; /* Jarak atas 5px */
+}
+
+/* Elemen list */
+.sidebar ul li {
+  /* Selektor untuk elemen li dalam sidebar */
+  display: flex; /* Flexbox untuk mengatur konten */
+  justify-content: center; /* Pusatkan konten secara horizontal */
+  align-items: center; /* Pusatkan konten secara vertikal */
+}
+
+/* Tautan dalam list */
+.sidebar ul li a {
+  /* Selektor untuk tautan dalam list */
+  text-decoration: none; /* Menghapus garis bawah tautan */
+  color: black; /* Warna teks hitam */
+}
+
+.sidebar ul li i {
+  /* Selektor untuk ikon dalam sidebar */
+  font-size: 30px; /* Ukuran ikon 30px */
+  color: #555; /* Warna abu-abu gelap */
+}
+
+/* Efek hover */
+.sidebar ul li a:hover {
+  /* Gaya tautan saat mouse di atasnya */
+  color: #85cddb; /* Warna teks berubah menjadi biru muda */
+}
+
+.sidebar ul li a:hover i {
+  /* Gaya ikon saat mouse di atas tautan */
+  color: #85cddb; /* Warna ikon berubah menjadi biru muda */
+}
+
+/* Main content */
+.main-content {
+  /* Selektor untuk konten utama */
+  background-color: #f8f9fa; /* Warna latar konten utama */
+  height: 97vh; /* Tinggi konten utama */
+  margin-top: 10px; /* Jarak atas dari tepi */
+  margin-bottom: 10px; /* Jarak bawah dari tepi */
+  margin-left: 80px; /* Jarak dari sidebar */
+  border-radius: 10px; /* Sudut membulat */
+  overflow-y: auto; /* Tambahkan scrollbar jika konten melebihi tinggi */
+}
+
+.komunitas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.komunitas-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.komunitas-item img {
+  width: 50px; /* Lebar gambar diatur menjadi 50 piksel */
+  height: 50px; /* Tinggi gambar diatur menjadi 50 piksel */
+  border-radius: 50%; /* Membulatkan sudut gambar menjadi lingkaran */
+  object-fit: cover; /* Memastikan gambar tetap proporsional dan mengisi area yang tersedia */
+}
+
+.komunitas-item span {
+  flex: 1;
+  font-size: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa; /* Warna latar belakang */
+  border-bottom: 3px solid #85cddb; /* Garis bawah berwarna biru */
+}
+
+.header .title {
+  font-size: 24px; /* Ukuran teks */
+  font-weight: bold; /* Tebal */
+  color: #343a40; /* Warna teks */
+}
+
+.header .icon-btn {
+  font-size: 20px; /* Ukuran ikon */
+  color: #aaebf7; /* Warna ikon */
+  text-decoration: none; /* Hilangkan garis bawah */
+  display: flex;
+  align-items: center; /* Vertikal tengah */
+  gap: 5px; /* Jarak antara ikon dan teks */
+}
+
+.header .icon-btn:hover {
+  color: #85cddb; /* Warna saat hover */
+}
+
+.header .btn-edit:hover {
+  color: #85cddb; /* Warna saat hover */
+  background-color: red;
+}
+
+/* Form Tambah Kategori */
+.form-tambah-kategori {
+  margin-top: 20px; /* Jarak atas */
+  padding: 10px; /* Ruang di sekitar form */
+  background-color: #f9f9f9; /* Latar belakang form */
+  border-radius: 10px; /* Sudut membulat */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+}
+
+.form-tambah-kategori input {
+  font-size: 16px; /* Ukuran font input */
+  padding: 10px; /* Padding internal */
+  border: 1px solid #ccc; /* Border abu-abu */
+  border-radius: 5px; /* Sudut membulat */
+}
+
+.form-tambah-kategori button {
+  font-size: 16px; /* Ukuran font tombol */
+  padding: 10px 20px; /* Padding internal */
+  border-radius: 5px; /* Sudut membulat */
+  margin-top: 10px; /* Jarak atas tombol */
+  background-color: #aaebf7;
+  border: #00d9ff;
+}
+
+.btn-danger {
+  background-color: #f09133;
+  border-color: #f09133;
+}
+
+.btn-success {
+  background-color: #aaebf7;
+  border-color: #aaebf7;
+}
+
+.btn-success:hover {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #d67b12;
+  border: 2px solid #d67b12;
+  color: white;
+}

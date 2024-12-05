@@ -1,0 +1,54 @@
+.upload-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 400px;
+}
+
+.upload-header h4 {
+  margin-bottom: 10px;
+}
+
+.drag-area {
+  border: 2px dashed #aaa;
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.drag-area:hover {
+  border-color: #85cddb;
+  background-color: #f5f5f5;
+}
+
+.drag-area img {
+  max-width: 100%;
+  display: block;
+  margin: 10px auto;
+}
+
+.drag-area p {
+  font-size: 14px;
+  color: #888;
+}
+
+.next-button {
+  float: right;
+  color: #f09133;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #85cddb;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #007bff;
+}
