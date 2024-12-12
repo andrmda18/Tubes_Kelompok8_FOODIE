@@ -47,7 +47,7 @@ if (isset($_POST['btnSimpan'])) {
     // Jika berhasil memperbarui data
     if ($updateQuery) {
         $successMsg = "Resep berhasil diperbarui!";
-        header("Location: ../home.php?successMsg=" . urlencode($successMsg));
+        header("Location: foto.php?IdResep=$IdResep&successMsg");
         exit();
     } else {
         $errMsg = "Gagal memperbarui resep! " . mysqli_error($conn);
@@ -68,10 +68,11 @@ mysqli_close($conn);
 <body>
     <h2>Edit Resep</h2>
     <form method="post">
+        <input type="hidden" name="IdResep" value="<?= $IdResep ?>">
         <input type="text" placeholder="Tambahkan Nama Resep..." name="NamaResep" maxlength="200" value="<?= htmlspecialchars($nama) ?>" required> <br>
         <textarea placeholder="Tambahkan Deskripsi..." name="Deskripsi" maxlength="200" required><?= htmlspecialchars($deskripsi) ?></textarea><br>
-        <textarea placeholder="Tambahkan Bahan-bahannya..." name="Bahan" maxlength="200" required><?= htmlspecialchars($bahan) ?></textarea> <br>
-        <textarea placeholder="Tambahkan Langkah-langkahnya..." name="Langkah" maxlength="200" required><?= htmlspecialchars($langkah) ?></textarea> <br>
+        <textarea placeholder="Tambahkan Bahan-bahannya..." name="Bahan"  required><?= htmlspecialchars($bahan) ?></textarea> <br>
+        <textarea style="white-space: pre-wrap" placeholder="Tambahkan Langkah-langkahnya..." name="Langkah"  required><?= htmlspecialchars($langkah) ?></textarea> <br>
         <input type="text" placeholder="Tambahkan durasi" name="Durasi" value="<?= htmlspecialchars($durasi) ?>" required>
         <input class="submit" type="submit" name="btnSimpan" value="Simpan">
     </form>

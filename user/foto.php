@@ -102,8 +102,28 @@ mysqli_close($conn);
                 <!-- Deskripsi, Durasi, Bahan, Langkah Resep -->
                 <div>
                     <p><strong>Durasi:</strong> <?= $durasi ?></p>
-                    <p><strong>Bahan:</strong> <?= $bahan ?></p>
-                    <p><strong>Langkah:</strong> <?= $langkah ?></p>
+                    
+                    <p><strong>Bahan:</strong> 
+                    <?php 
+                    $array = explode(',', $bahan);
+                    echo "<ul>";
+                    foreach ($array as $bahan){
+                        echo "<li>". htmlspecialchars($bahan). "</li>";
+                    };
+                    echo "</ul>";
+                    ?>
+                </p>
+                   
+                    <p><strong>Langkah:</strong>
+                    <?php 
+                    $array2 = explode('-', $langkah);
+                    echo "<ul>";
+                    foreach ($array2 as $langkah){
+                        echo "<li>". htmlspecialchars($langkah). "</li>";
+                    };
+                    echo "</ul>";
+                    ?>
+                    </p>
                 </div>
             </div>
             <!-- Main Content End -->

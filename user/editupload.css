@@ -107,3 +107,7 @@ form button {
 form button:hover {
   background-color: #e64a19; /* Warna tombol sedikit lebih gelap saat di-hover */
 }
+
+textarea {
+  white-space: pre-wrap; /* Meniru perilaku <pre> */
+}

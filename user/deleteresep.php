@@ -11,7 +11,7 @@ if (isset($_GET['IdResep'])) {
     if (mysqli_query($conn, $sqlDelete)) {
         // Redirect ke halaman rumah.php dengan pesan sukses
         $successMsg = "Resep berhasil dihapus!";
-        header("Location: index.php?successMsg=" . urlencode($successMsg));
+        header("Location: home.php?successMsg=" . urlencode($successMsg));
         exit;
     } else {
         // Tampilkan pesan error jika gagal menghapus resep

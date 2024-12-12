@@ -66,7 +66,7 @@ if (isset($_POST['btnSimpan'])) {
               <a href="#profile"><i class="bi bi-person-fill"></i></a>
             </li>
             <li>
-              <a href="#home"><i class="bi bi-house-door-fill"></i></a>
+              <a href="index.php"><i class="bi bi-house-door-fill"></i></a>
             </li>
             <li>
               <a href="#notification"><i class="bi bi-bell-fill"></i></a>

@@ -29,7 +29,6 @@ if ($IdResep > 0) {
       die("Resep tidak ditemukan!");
   }
 }
-
 if (isset($_POST['btnSimpan'])) {
     // Ambil data dari form
     $nama = $_POST['NamaResep'];
@@ -72,8 +71,8 @@ if (isset($_POST['btnSimpan'])) {
         <form action="" method="POST">
           <input type="text" name="NamaResep" value="<?= htmlspecialchars($nama) ?>" placeholder="Tambahkan Judul..." maxlength="200">
           <textarea name="Deskripsi" placeholder="Tambahkan Deskripsinya..." maxlength="200"><?= htmlspecialchars($deskripsi) ?></textarea>
-          <textarea name="Bahan" placeholder="Tambahkan Bahan-bahannya..." maxlength="200"><?= htmlspecialchars($bahan) ?></textarea>
-          <textarea name="Langkah" placeholder="Tambahkan Langkah-langkahnya..." maxlength="200"><?= htmlspecialchars($langkah) ?></textarea>
+          <textarea style="white-space: pre-wrap" name="Bahan" placeholder="Tambahkan Bahan-bahannya..." ><?= htmlspecialchars($bahan) ?></textarea>
+          <textarea style="white-space: pre-wrap" name="Langkah" placeholder="Tambahkan Langkah-langkahnya..." ><?= htmlspecialchars($langkah) ?></textarea>
           <input type="text" name="Durasi" value="<?= htmlspecialchars($durasi) ?>" placeholder="Tambahkan Durasi..." maxlength="200">
           <button type="submit" name="btnSimpan">Simpan</button>
         </form>

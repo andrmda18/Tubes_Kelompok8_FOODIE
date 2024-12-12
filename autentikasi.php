@@ -29,7 +29,7 @@ if ($row == null) { // username tidak ditemukan
                 header("location: admin/index.php");
                 break;
             case 'user':
-                header("location: user/index.php");
+                header("location: user/home.php");
                 break;
         }
         exit();
