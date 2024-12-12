@@ -56,7 +56,7 @@ mysqli_close($conn);
                 <ul>
                     <li><img src="../images/LOGO.png" alt="logo" /></li>
                     <li><a href="#profile"><i class="bi bi-person-fill"></i></a></li>
-                    <li><a href="../home.php"><i class="bi bi-house-door-fill"></i></a></li>
+                    <li><a href="home.php"><i class="bi bi-house-door-fill"></i></a></li>
                     <li><a href="#communities"><i class="bi bi-people-fill"></i></a></li>
                     <li><a href="#messages"><i class="bi bi-chat-square-text-fill"></i></a></li>
                     <li><a href="#notification"><i class="bi bi-bell-fill"></i></a></li>

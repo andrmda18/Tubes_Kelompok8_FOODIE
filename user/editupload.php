@@ -43,7 +43,7 @@ if (isset($_POST['btnSimpan'])) {
     $query = mysqli_query($conn, $sqlStatment);
 
     if ($query) {
-      header("Location: index.php?IdResep=$IdResep&successMsg=Data resep berhasil diperbarui.");
+      header("Location: home.php?IdResep=$IdResep&successMsg=Data resep berhasil diperbarui.");
       exit();
   } else {
       echo "Gagal memperbarui data resep: " . mysqli_error($conn);
