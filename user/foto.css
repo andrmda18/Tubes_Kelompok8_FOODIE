@@ -102,8 +102,7 @@ html {
 /* Gaya untuk gambar di dalam container-flex */
 .container img {
   width: 50%; /* Mengatur lebar gambar menjadi 50% dari lebar kontainer */
-  max-width: 100%; /* Memastikan gambar tidak melebihi lebar yang ditentukan */
-  height: auto; /* Menjaga aspek rasio gambar agar tidak terdistorsi */
+  height: 500px; /* Menjaga aspek rasio gambar agar tidak terdistorsi */
   border-radius: 10px; /* Memberikan efek rounded pada gambar */
 }
 
@@ -214,7 +213,7 @@ html {
 }
 
 .nav-resep li {
-  margin-bottom: 10px; /* Menambahkan jarak antar tombol vertikal */
+  margin-bottom: 20px; /* Menambahkan jarak antar tombol vertikal */
 }
 
 .nav-resep li a {
@@ -293,4 +292,12 @@ html {
   text-decoration: none;
   color: #333;
   display: block;
+}
+
+/* Gaya untuk memastikan gambar memenuhi area kontennya */
+.recipe-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
 }

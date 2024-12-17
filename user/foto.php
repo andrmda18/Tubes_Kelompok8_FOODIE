@@ -1,8 +1,14 @@
 <?php
+session_start();
 include "../dbconfig.php"; // Koneksi database
 
 // Memastikan IdResep valid dan ada dalam URL
 $IdResep = isset($_GET['IdResep']) ? intval($_GET['IdResep']) : 0;
+
+if (!isset($_SESSION['username'])) {
+    echo "Sesi username tidak ditemukan!";
+    exit();
+}
 
 if ($IdResep > 0) {
     $sqlStatement = "SELECT * FROM tambahresep WHERE IdResep = $IdResep";
@@ -18,6 +24,8 @@ if ($IdResep > 0) {
         $bahan = $resep['Bahan'];
         $langkah = $resep['Langkah'];
         $foto = $resep['foto'];
+        $user = $resep['username'];
+        // echo $user;
     } else {
         echo "Resep tidak ditemukan.";
         exit(); // Menghentikan eksekusi jika resep tidak ditemukan
@@ -70,24 +78,29 @@ mysqli_close($conn);
             <!-- Main Content Start -->
             <div class="col main-content">
                 <div class="container p-5">
-                    <img src="../images/<?= htmlspecialchars($foto) ?>" alt="Foto Resep" width="50%" class="mb-3" />
-
+                        <img src="../images/<?= htmlspecialchars($foto) ?>" alt="Foto Resep" class="recipe-image" />
                     <!-- Konten Resep -->
                     <div class="content">
                         <!-- Navigasi Edit dan Delete -->
                         <div class="container">
-                            <!-- Letakkan ikon titik tiga dan menu di sini -->
-                            <button class="dots" onclick="toggleMenu()">⋮</button>
-                            <div class="menu" id="menu">
-                            <ul>
-                                <li><a href="editresep.php?IdResep=<?= $IdResep ?>">Edit</a></li>
-                                <li><a href="deleteresep.php?IdResep=<?= $IdResep ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus resep ini?')">Delete</a></li>
-                            </ul>
-                            </div>
+                            <?php if ($resep['username'] == $_SESSION['username']):
+                                ?>
+                                <button class="dots" onclick="toggleMenu()">⋮</button>
+                                <div class="menu" id="menu">
+                                    <ul>
+                                        <li>
+                                            <a href="editresep.php?IdResep=<?= $resep['IdResep']; ?>">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="deleteresep.php?IdResep=<?= $resep['IdResep']; ?>" 
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus resep ini?')">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <h3><?= $nama ?></h3>
                         <p><?= $deskripsi ?></p>
-
 
                         <!-- Navigasi Simpan Resep -->
                         <ul class="nav-resep">
@@ -100,7 +113,7 @@ mysqli_close($conn);
                 </div>
 
                 <!-- Deskripsi, Durasi, Bahan, Langkah Resep -->
-                <div>
+                <div id=more>
                     <p><strong>Durasi:</strong> <?= $durasi ?></p>
                     
                     <p><strong>Bahan:</strong> 
@@ -112,16 +125,16 @@ mysqli_close($conn);
                     };
                     echo "</ul>";
                     ?>
-                </p>
+                    </p>
                    
                     <p><strong>Langkah:</strong>
                     <?php 
-                    $array2 = explode('-', $langkah);
-                    echo "<ul>";
-                    foreach ($array2 as $langkah){
-                        echo "<li>". htmlspecialchars($langkah). "</li>";
-                    };
-                    echo "</ul>";
+                    $array2 = array_filter(explode('-', $langkah), 'strlen'); // Menghapus elemen kosong
+                    echo "<l>";
+                    foreach ($array2 as $step) {
+                        echo "<li>" . htmlspecialchars(trim($step)) . "</li>";
+                    }
+                    echo "</l>";
                     ?>
                     </p>
                 </div>
