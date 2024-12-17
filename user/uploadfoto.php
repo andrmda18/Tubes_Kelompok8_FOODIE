@@ -24,7 +24,7 @@ if (isset($_POST['btnSimpan'])) {
     }
 
     // Simpan ke database
-    $sqlStatment = "INSERT INTO tambahresep (username, foto) VALUES ('$username', '$photoName')";
+    $sqlStatment = "INSERT INTO tambahresep (username, foto, idKategori) VALUES ('$username', '$photoName', 0)";
     if (mysqli_query($conn, $sqlStatment)) {
         $IdResep = mysqli_insert_id($conn); // Mendapatkan ID resep
         mysqli_close($conn);

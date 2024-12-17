@@ -11,6 +11,9 @@ $sqlStatment = "
     ORDER BY t.IdResep DESC"; // Urutkan berdasarkan id terbaru
 $query = mysqli_query($conn, $sqlStatment);
 
+$sqlQuery = "SELECT * FROM kategori WHERE idKategori != 0";
+$sql = mysqli_query($conn, $sqlQuery);
+
 ?>
 
 <!DOCTYPE html>
@@ -204,78 +207,18 @@ $query = mysqli_query($conn, $sqlStatment);
           <section id="rekomendasi">
             <div class="row rekomendasi-section">
               <h3><b>Rekomendasi buat Foodies !</b></h3>
-              <div class="col-md-2">
-                <div class="rekomen">
-                  <div class="card-rekomen">
-                    <img
-                      src="../images/breakfast.jpg"
-                      alt=""
-                      class="card-img-top img-fluid"
-                    />
-                    <p class="card-text"><b>Breakfast</b></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="rekomen">
-                  <div class="card-rekomen">
-                    <img
-                      src="../images/breakfast.jpg"
-                      alt=""
-                      class="card-img-top img-fluid"
-                    />
-                    <p class="card-text"><b>Dessert</b></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="rekomen">
-                  <div class="card-rekomen">
-                    <img
-                      src="../images/breakfast.jpg"
-                      alt=""
-                      class="card-img-top img-fluid"
-                    />
-                    <p class="card-text"><b>Breakfast</b></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="rekomen">
-                  <div class="card-rekomen">
-                    <img
-                      src="../images/breakfast.jpg"
-                      alt=""
-                      class="card-img-top img-fluid"
-                    />
-                    <p class="card-text"><b>Breakfast</b></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="rekomen">
-                  <div class="card-rekomen">
-                    <img
-                      src="../images/breakfast.jpg"
-                      alt=""
-                      class="card-img-top img-fluid"
-                    />
-                    <p class="card-text"><b>Breakfast</b></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="rekomen">
-                  <div class="card-rekomen">
-                    <img
-                      src="../images/breakfast.jpg"
-                      alt=""
-                      class="card-img-top img-fluid"
-                    />
-                    <p class="card-text"><b>Breakfast</b></p>
-                  </div>
-                </div>
-              </div>
+              <?php
+              while ($row = $sql->fetch_assoc()) {
+                echo '<div class="col-md-2">';
+                echo '  <div class="rekomen">';
+                echo '    <div class="card-rekomen">';
+                echo '      <img src="../images/'.$row['foto'].'" alt="" class="card-img-top img-fluid"/>';
+                echo '      <p class="card-text"><b>'.$row['namaKategori'].'</b></p>';
+                echo '    </div>';
+                echo '  </div>';
+                echo '</div>';
+              }
+              ?>
             </div>
           </section>
           <!-- recomendation end -->

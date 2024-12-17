@@ -13,6 +13,9 @@ if (isset($_SESSION['username'])) {
 // Memastikan IdResep valid dan ada dalam URL
 $IdResep = isset($_GET['IdResep']) ? intval($_GET['IdResep']) : 0;
 
+$sqlStatment = "SELECT * FROM kategori WHERE idKategori != 0";
+$query = mysqli_query($conn, $sqlStatment);
+
 if ($IdResep > 0) {
   // Ambil data resep berdasarkan IdResep
   $sqlGetResep = "SELECT * FROM tambahresep WHERE IdResep = $IdResep";
@@ -25,6 +28,7 @@ if ($IdResep > 0) {
       $durasi = $row['Durasi'] ?? '';
       $bahan = $row['Bahan'] ?? '';
       $langkah = $row['Langkah'] ?? '';
+      $idKategori = $row['idKategori']?? '';
   } else {
       die("Resep tidak ditemukan!");
   }
@@ -36,9 +40,10 @@ if (isset($_POST['btnSimpan'])) {
     $durasi = $_POST['Durasi'];
     $bahan = $_POST['Bahan'];
     $langkah = $_POST['Langkah'];
+    $idKategori = $_POST['idKategori'];
 
     // Simpan detail resep ke dalam tabel
-    $sqlStatment = "UPDATE tambahresep SET NamaResep='$nama', Deskripsi='$deskripsi', Durasi='$durasi', Bahan='$bahan', Langkah='$langkah' WHERE IdResep=$IdResep";
+    $sqlStatment = "UPDATE tambahresep SET NamaResep='$nama', Deskripsi='$deskripsi', Durasi='$durasi', Bahan='$bahan', Langkah='$langkah', idKategori='$idKategori' WHERE IdResep=$IdResep";
     $query = mysqli_query($conn, $sqlStatment);
 
     if ($query) {
@@ -70,10 +75,18 @@ if (isset($_POST['btnSimpan'])) {
     <img src="../images/<?= htmlspecialchars($foto) ?>" alt="Foto Resep" class="post-image">
         <form action="" method="POST">
           <input type="text" name="NamaResep" value="<?= htmlspecialchars($nama) ?>" placeholder="Tambahkan Judul..." maxlength="200">
-          <textarea name="Deskripsi" placeholder="Tambahkan Deskripsinya..." maxlength="200"><?= htmlspecialchars($deskripsi) ?></textarea>
+          <textarea name="Deskripsi" placeholder="Tambahkan Deskripsinya..." maxlength="250"><?= htmlspecialchars($deskripsi) ?></textarea>
           <textarea style="white-space: pre-wrap" name="Bahan" placeholder="Tambahkan Bahan-bahannya..." ><?= htmlspecialchars($bahan) ?></textarea>
           <textarea style="white-space: pre-wrap" name="Langkah" placeholder="Tambahkan Langkah-langkahnya..." ><?= htmlspecialchars($langkah) ?></textarea>
           <input type="text" name="Durasi" value="<?= htmlspecialchars($durasi) ?>" placeholder="Tambahkan Durasi..." maxlength="200">
+          <select name="idKategori" id="idKategori" required>
+              <option value="" disabled selected>-- Pilih Kategori --</option>
+              <?php
+              while ($row = mysqli_fetch_assoc($query)) {
+                  echo "<option value='" . $row['idKategori'] . "'>" . $row['namaKategori'] . "</option>";
+              }
+              ?>
+          </select><br>
           <button type="submit" name="btnSimpan">Simpan</button>
         </form>
     </div>

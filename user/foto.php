@@ -130,11 +130,11 @@ mysqli_close($conn);
                     <p><strong>Langkah:</strong>
                     <?php 
                     $array2 = array_filter(explode('-', $langkah), 'strlen'); // Menghapus elemen kosong
-                    echo "<l>";
+                    echo "<ol>";
                     foreach ($array2 as $step) {
                         echo "<li>" . htmlspecialchars(trim($step)) . "</li>";
                     }
-                    echo "</l>";
+                    echo "</ol>";
                     ?>
                     </p>
                 </div>
