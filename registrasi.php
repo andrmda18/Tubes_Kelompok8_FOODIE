@@ -95,11 +95,12 @@ $conn->close();
                     <input type="password" id="kataSandi" name="kataSandi" class="form-control custom-outline" placeholder="Password" required />
                 </div>
                 <div class="mb-2">
-                    <select class="form-control custom-outline" id="role" name="role" required>
-                    <option value="" disabled selected>Pilih Role</option> <!-- Pilihan default yang tidak dapat dipilih -->
-                    <option value="admin">Admin</option>
+                  <input type="hidden" id="role" name="role" value="user"/>
+                    <!-- <select class="form-control custom-outline" id="role" name="role" required>
+                    <option value="" disabled selected>Pilih Role</option> Pilihan default yang tidak dapat dipilih -->
+                    <!-- <option value="admin">Admin</option>
                     <option value="user">User</option>
-                    </select>
+                    </select>  -->
                 </div>
 
                 <!-- Tampilan Input File dengan Style Sama -->
