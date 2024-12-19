@@ -9,6 +9,7 @@ $sqlStatement = "
     SELECT k.namaKategori, k.foto, COUNT(r.IdResep) AS jumlah_resep
     FROM kategori k
     LEFT JOIN tambahresep r ON k.idKategori = r.IdKategori
+    WHERE k.idKategori !=0
     GROUP BY k.idKategori, k.namaKategori, k.foto";
 $result = mysqli_query($conn, $sqlStatement);
 
