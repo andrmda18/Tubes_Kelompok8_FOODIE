@@ -56,18 +56,153 @@ if (isset($_POST['btnSimpan'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Edit postingan</title>
 
+  <link href="editupload.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="editupload.css" />
   <link rel="stylesheet" href="https://fonts.google.com/share?selection.family=League+Spartan:wght@100..900" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+<style>
+/* Styling Umum */
+body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .main-container {
+      display: flex;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 20%;
+      background-color: #343a40;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      padding: 10px 15px;
+      cursor: pointer;
+      color: #adb5bd;
+    }
+
+    .sidebar li:hover,
+    .sidebar li.active {
+      background-color: #495057;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    /* Konten */
+    .content {
+      width: 80%;
+      padding: 20px;
+      background-color: #fff;
+      overflow-y: auto;
+
+    }
+
+    /* Modal Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 10;
+      overflow-y: auto;
+    }
+
+    /* Modal */
+    .post-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 90vh; /* Batasi tinggi modal */
+  overflow-y: auto; /* Scroll untuk modal */
+    }
+
+    .post-modal img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .post-modal form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .post-modal form input,
+    .post-modal form textarea,
+    .post-modal form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .post-modal form textarea {
+      resize: none;
+    }
+
+    .post-modal form button {
+      background-color: #0d6efd;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .post-modal form button:hover {
+      background-color: #0b5ed7;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .content {
+        width: 100%;
+      }
+    }
+
+</style>
 </head>
 
 <body>
