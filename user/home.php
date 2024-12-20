@@ -47,7 +47,7 @@ $sql = mysqli_query($conn, $sqlQuery);
       <div class="row">
         <div class="col-2 p-0 sidebar">
           <ul>
-            <li><img src="../images/LOGO.png" alt="logo" /></li>
+            <!-- <li><img src="../images/LOGO.png" alt="logo" /></li> -->
             <li>
               <a href="#profile"><i class="bi bi-person-fill"></i>Profil</a>
             </li>
@@ -97,7 +97,13 @@ $sql = mysqli_query($conn, $sqlQuery);
             <div
               class="container-fluid d-flex align-items-center justify-content-center mb-3"
             >
-              <img src="../images/Koin.png" alt="" width="45px" class="me-2" />
+              <a href="koin.php" class="position-relative">
+                <img src="../images/Koin.png" alt="" width="45px" class="me-2" />
+                <!-- Angka koin di bawah ikon -->
+                <span class="position-absolute bottom-0 start-50 translate-middle-x" style="font-size: 12px;">
+                  100
+                </span>
+              </a>
               <form class="d-flex w-50">
                 <div class="position-relative flex-grow-1">
                   <input
@@ -213,7 +219,7 @@ $sql = mysqli_query($conn, $sqlQuery);
                 echo '  <div class="rekomen">';
                 echo '    <div class="card-rekomen">';
                 echo '      <img src="../images/'.$row['foto'].'" alt="" class="card-img-top img-fluid"/>';
-                echo '      <p class="card-text"><b>'.$row['namaKategori'].'</b></p>';
+                echo '      <a href="foto.php?idKategori=' . $row['idKategori'] . '" class="custom-link"><p class="card-text"><b>'.$row['namaKategori'].'</b></p></a>';
                 echo '    </div>';
                 echo '  </div>';
                 echo '</div>';

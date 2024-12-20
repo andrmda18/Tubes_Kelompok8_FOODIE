@@ -13,66 +13,121 @@ if ($query->num_rows > 0) {
     $row = $query->fetch_assoc();
 
     // Mengambil data resep
+    $username = $row['username'];
     $NamaResep = $row['NamaResep'];
-    $deskripsi = $row['deskripsi'];
+    $deskripsi = $row['Deskripsi'];
     $Durasi = $row['Durasi'];
     $Bahan = $row['Bahan'];
     $Langkah = $row['Langkah'];
-    $foto = $row['foto'];
+    $foto = $row['foto']; // Path foto, misalnya 'uploads/image.jpg'
 } else {
-    // Jika tidak ada data, gunakan nilai default
-    echo "Data tidak ditemukan";
+    die("Data tidak ditemukan");
 }
 
 require('../fpdf186/fpdf.php');
 
-// membuat objek fpdf
+// Membuat objek fpdf
 $pdf = new FPDF();
-$pdf->AddPage(); //membuat halaman baru
+$pdf->AddPage();
 
-// menambahkan judul
+// Menambahkan judul
 $pdf->SetFont('Arial', 'B', 16);
-$pdf->Cell(200, 10, 'Resep: '. $NamaResep, 0, 1, 'C');
+$pdf->Ln(5);
+$pdf->Cell(200, 5, 'Resep: '. $NamaResep, 0, 1, 'C');
 
-// // menambahkan nama pengguna
-// $pdf->SetFont('Arial', 'I', 12);
-// $pdf->Cell(200, 10, 'Nama Penulis: '. $namaPengguna, 0, 1, 'R');
+// Menambahkan username
+$pdf->SetFont('Arial', '', 10);
+$pdf->Ln(3);
+$pdf->Cell(200, 10, 'Author: '. $username, 0, 1, 'C');
 
-// menambahkan deskripsi
+// Menambahkan gambar jika ada
+if (!empty($foto)) {
+    $foto = '../images/' . $foto; // Sesuaikan path folder
+    if (file_exists($foto)) {
+       // Tentukan lebar gambar (misalnya, 100 mm) dan hitung posisi x untuk menengahkannya
+        $imageWidth = 100;
+        $pageWidth = $pdf->GetPageWidth(); // Lebar halaman
+        $xPosition = ($pageWidth - $imageWidth) / 2; // Posisi x agar gambar berada di tengah
+
+        // Tampilkan gambar
+        $pdf->Image($foto, $xPosition, $pdf->GetY(), $imageWidth); // Posisi x dihitung, posisi y adalah posisi saat ini
+        $pdf->Ln(100); // Tambahkan jarak setelah gambar
+    } else {
+        echo "Gambar tidak ditemukan di lokasi: $foto";
+        exit;
+    }
+} else {
+    echo "Tidak ada gambar yang ditentukan.";
+    exit;
+}
+
+// if (file_exists($foto)) {
+//     echo "File ditemukan: $foto";
+// } else {
+//     echo "File tidak ditemukan: $foto";
+//     echo "Path lengkap: " . realpath($foto);
+// }
+// exit;
+
+
+
+// Menambahkan deskripsi
 $pdf->SetFont('Arial', '', 12);
-$pdf->MultiCell(0, 10, $deskripsi);
+$pdf->MultiCell(0, 10, $Deskripsi);
 
-// menambahkan durasi
+// Menambahkan durasi
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, 'Durasi:', 0, 1);
 $pdf->SetFont('Arial', '', 12);
 $pdf->MultiCell(0, 10, $Durasi);
 
-// menambahkan bahan
+// Menambahkan bahan
 $pdf->Ln(10);
+$pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, 'Bahan-bahan:', 0, 1);
-$pdf->MultiCell(0, 10, $Bahan);
+$pdf->SetFont('Arial', '', 12);
+$bahanList = explode(",", $Bahan); // Memisahkan berdasarkan koma
+$bahanNumber = 1;
+foreach ($bahanList as $bahan) {
+    if (!empty(trim($bahan))) {
+        $pdf->Cell(5); // Memberikan sedikit indentasi
+        $pdf->Cell(0, 10, $bahanNumber++ . '. ' . trim($bahan), 0, 1); // Menambahkan angka saja
+    }
+}
 
-// menambahkan langkah
+// Menambahkan langkah
 $pdf->Ln(10);
+$pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, 'Langkah-langkah:', 0, 1);
-$pdf->MultiCell(0, 10, $Langkah);
+$pdf->SetFont('Arial', '', 12);
 
-/// Menyimpan file PDF sementara
+// Memecah string langkah menjadi array berdasarkan baris
+$langkahList = explode("-", $Langkah);
+$langkahNumber = 1;
+foreach ($langkahList as $langkah) {
+    if (!empty(trim($langkah))) {
+        $pdf->Cell(5); // Memberikan sedikit indentasi
+        $pdf->Cell(0, 10, $langkahNumber++ . '. ' . trim($langkah), 0, 1); // Menambahkan angka saja
+    }
+}
+
+// Menyimpan file PDF sementara
 $fileName = 'resep_' . strtolower(str_replace(' ', '_', $NamaResep)) . '.pdf';
-$pdf->Output('F', $fileName); // Menyimpan PDF ke file
+$pdf->Output('F', $fileName);
 
 // Mengatur header untuk mengunduh file PDF
 header('Content-Type: application/pdf');
 header('Content-Disposition: attachment; filename="' . $fileName . '"');
 header('Content-Length: ' . filesize($fileName));
 
+// Membersihkan buffer output
+ob_clean();
+flush();
+
 // Mengirim file PDF ke browser
 readfile($fileName);
 
 // Menghapus file sementara setelah diunduh
 unlink($fileName);
-
-// Redirect setelah file berhasil diunduh
-header('Location: unduhan.php?status=success');
 exit;
-
 ?>
