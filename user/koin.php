@@ -27,15 +27,6 @@
             position: relative;
             }
 
-            .badge {
-            font-size: 12px;  /* Ukuran font */
-            padding: 5px 10px; /* Padding untuk badge */
-            position: absolute;
-            bottom: -5px;  /* Menempatkan angka sedikit di bawah ikon */
-            left: 50%;
-            transform: translateX(-50%);
-            }
-
     </style>
 </head>
 <body>
@@ -59,13 +50,6 @@
         <input type="hidden" id="hiddenHarga" name="harga" value="">
         <button type="submit" id="submitBtn" style="display: none;">Lanjutkan</button>
     </form>
-
-    <div class="container-fluid d-flex align-items-center justify-content-center mb-3">
-        <a href="koin.php" class="position-relative">
-            <img src="../images/Koin.png" alt="" width="45px" class="me-2" />
-            <span class="position-relative bottom-0 start-50 translate-middle-x badge bg-primary" style="font-size: 12px;">100</span>
-        </a>
-    </div>
 
 
     <script>
