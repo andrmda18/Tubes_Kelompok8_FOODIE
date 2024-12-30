@@ -97,7 +97,7 @@ $sql = mysqli_query($conn, $sqlQuery);
             <div
               class="container-fluid d-flex align-items-center justify-content-center mb-3"
             >
-              <a href="koin.php" class="position-relative">
+              <a href="indexkoin.php" class="position-relative">
                 <img src="../images/Koin.png" alt="" width="45px" class="me-2" />
                 <!-- Angka koin di bawah ikon -->
                 <span class="position-absolute bottom-0 start-50 translate-middle-x" style="font-size: 12px;">

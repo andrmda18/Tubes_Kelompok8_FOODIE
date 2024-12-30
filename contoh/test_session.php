@@ -1,131 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        /* Reset Margin dan Padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Container Utama */
-        .container {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            padding: 20px;
-            gap: 20px; /* Beri jarak antar elemen */
-        }
-
-        /* Bagian Gambar */
-        .image-container {
-            flex: 1 1 40%; /* 40% untuk gambar */
-            display: flex;
-            justify-content: center;
-        }
-
-        .recipe-image {
-            width: 100%;
-            max-width: 400px; /* Maksimal ukuran foto */
-            height: auto;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        /* Bagian Konten */
-        .content-container {
-            flex: 1 1 55%; /* 55% untuk konten */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 10px;
-        }
-
-        /* Judul dan Deskripsi */
-        .title {
-            font-size: 24px;
-            color: #FF8C42;
-            margin-bottom: 8px;
-        }
-
-        .description {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        /* Tombol Navigasi */
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Beri ruang antar tombol */
-        }
-
-        .nav-btn {
-            background-color: #FF8C42;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 16px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-btn:hover {
-            background-color: #e07c31;
-        }
-
-        /* Media Query untuk Responsivitas */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .image-container,
-            .content-container {
-                flex: 1 1 100%;
-            }
-
-            .recipe-image {
-                max-width: 100%;
-            }
-
-            .nav-btn {
-                font-size: 14px;
-            }
-        }
-    </style>
+    <title>Top Up Koin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <div class="container">
-        <!-- Bagian Gambar -->
-        <div class="image-container">
-            <img src="../images/breakfast.jpg" alt="Foto Resep" class="recipe-image" />
+    <div class="container mt-5">
+        <h2 class="text-center">Top Up Koin</h2>
+        <p class="text-center">Isi ulang koin Anda untuk menikmati berbagai fitur</p>
+        
+        <div class="card p-4">
+            <form>
+                <!-- Jumlah Koin -->
+                <div class="mb-3">
+                    <label for="jumlahKoin" class="form-label">Jumlah Koin</label>
+                    <input type="number" class="form-control" id="jumlahKoin" placeholder="Masukkan jumlah koin" required>
+                    <small class="form-text text-muted">1 Koin = Rp 1000</small>
+                </div>
+
+                <!-- Metode Pembayaran -->
+                <div class="mb-3">
+                    <label for="metodePembayaran" class="form-label">Metode Pembayaran</label>
+                    <select class="form-select" id="metodePembayaran" required>
+                        <option selected>Pilih Metode Pembayaran</option>
+                        <option value="bank">Transfer Bank</option>
+                        <option value="ewallet">eWallet (GoPay, OVO, dll.)</option>
+                        <option value="kartu">Kartu Kredit/Debit</option>
+                    </select>
+                </div>
+
+                <!-- Total Pembayaran -->
+                <div class="mb-3">
+                    <label for="totalPembayaran" class="form-label">Total Pembayaran</label>
+                    <input type="text" class="form-control" id="totalPembayaran" disabled value="Rp 0">
+                </div>
+
+                <!-- Tombol -->
+                <button type="submit" class="btn btn-primary w-100">Top Up Sekarang</button>
+            </form>
         </div>
 
-        <!-- Bagian Konten -->
-        <div class="content-container">
-            <h2 class="title">Ramen Sedap</h2>
-            <p class="description">Ramen enak, kuah melimpah</p>
-
-            <!-- Navigasi Simpan, Lihat, Bagikan, Unduh -->
-            <div class="buttons-container">
-                <button class="nav-btn">Simpan Resep</button>
-                <button class="nav-btn">Lihat Resep</button>
-                <button class="nav-btn">Bagikan Resep</button>
-                <button class="nav-btn">Unduh Resep</button>
-            </div>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-link">Kembali ke Halaman Utama</a>
+            <a href="#" class="btn btn-link">Bantuan & Dukungan</a>
         </div>
     </div>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
