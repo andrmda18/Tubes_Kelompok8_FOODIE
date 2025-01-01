@@ -14,13 +14,13 @@ $sqlSaldo = "
     SELECT 
         username,
         COALESCE(SUM(CASE WHEN riwayat_transaksi = 'top up' THEN jumlahtransaksi ELSE 0 END), 0) AS total_masuk,
-        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'feedback' THEN jumlahtransaksi ELSE 0 END), 0) AS total_keluar,
-        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'pemberian' THEN jumlahtransaksi ELSE 0 END), 0) AS total_pemberian,
+        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'memberi gift' THEN jumlahtransaksi ELSE 0 END), 0) AS total_keluar,
+        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'menerima gift' THEN jumlahtransaksi ELSE 0 END), 0) AS total_pemberian,
         COALESCE(SUM(CASE WHEN riwayat_transaksi = 'penarikan' THEN jumlahtransaksi ELSE 0 END), 0) AS total_penarikan,
         COALESCE((
             (SUM(CASE WHEN riwayat_transaksi = 'top up' THEN jumlahtransaksi ELSE 0 END) - 
-             SUM(CASE WHEN riwayat_transaksi = 'pemberian' THEN jumlahtransaksi ELSE 0 END)) - 
-            (SUM(CASE WHEN riwayat_transaksi = 'feedback' THEN jumlahtransaksi ELSE 0 END) + 
+             SUM(CASE WHEN riwayat_transaksi = 'memberi gift' THEN jumlahtransaksi ELSE 0 END)) - 
+            (SUM(CASE WHEN riwayat_transaksi = 'menerima gift' THEN jumlahtransaksi ELSE 0 END) + 
              SUM(CASE WHEN riwayat_transaksi = 'penarikan' THEN jumlahtransaksi ELSE 0 END))
         ), 0) AS saldo
     FROM koin

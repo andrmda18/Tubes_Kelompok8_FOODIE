@@ -5,8 +5,11 @@ include "../dbconfig.php"; // Koneksi database
 // Memastikan IdResep valid dan ada dalam URL
 $IdResep = isset($_GET['IdResep']) ? intval($_GET['IdResep']) : 0;
 
-if (!isset($_SESSION['username'])) {
-    echo "Sesi username tidak ditemukan!";
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username']; // Ambil dari session
+} else {
+    // Tangani jika username tidak ada di session
+    echo "Anda harus login terlebih dahulu.";
     exit();
 }
 
@@ -35,6 +38,42 @@ if ($IdResep > 0) {
     exit();
 }
 
+if (isset($_SESSION['jumlahKoin']) && isset($_SESSION['username'])) {
+    $jumlahKoin = $_SESSION['jumlahKoin'];  // Mengambil jumlah koin yang dipilih
+    $idPenerima = $_SESSION['username'];    // Mengambil username penerima
+    $tanggal = date('Y-m-d H:i:s');          // Menentukan tanggal transaksi
+} else {
+    echo "Data session tidak ditemukan.";
+    exit();
+}
+
+
+// Proses pemberian gift tahap pertama (memilih jumlah koin)
+if (isset($_POST['chooseGift'])) {
+    $_SESSION['jumlahKoin'] = $_POST['jumlahKoin']; // Menyimpan jumlah koin yang dipilih
+    $_SESSION['username'] = $_POST['username']; // ID penerima gift
+}
+
+// Proses pemberian gift tahap kedua (konfirmasi dan simpan di database)
+if (isset($_POST['confirmGift'])) {
+    $jumlahKoin = $_SESSION['jumlahKoin'];
+    $idPenerima = $_SESSION['username'];
+
+    // Simpan riwayat transaksi pemberian gift
+    $tanggal = date('Y-m-d H:i:s');
+    mysqli_query($conn, "INSERT INTO koin (username, status, jumlahtransaksi, tanggal, riwayat_transaksi, idTransaksi) 
+                        VALUES ('$idPenerima', 'berhasi', '$jumlahKoin', '$tanggal', 'menerima gift, 0)");
+
+    // Simpan riwayat penerimaan gift
+    mysqli_query($conn, "INSERT INTO koin (username, status, jumlahtransaksi, tanggal, riwayat_transaksi, idTransaksi) 
+                        VALUES ('$username', '$jumlahKoin', '$tanggal', 'menerima gift, 0)");
+
+    // Hapus data session sementara
+    unset($_SESSION['jumlahKoin']);
+    unset($_SESSION['idPenerima']);
+
+    echo "<script>alert('Gift berhasil diberikan!'); window.location='foto.php';</script>";
+}
 mysqli_close($conn);
 ?>
 
@@ -55,6 +94,36 @@ mysqli_close($conn);
       href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
     />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        .rating i {
+            font-size: 2rem;
+            color: #000;
+        }
+        .coin {
+            display: inline-block;
+            margin: 0 10px;
+            text-align: center;
+        }
+        .coin img {
+            width: 50px;
+            height: 50px;
+        }
+        .coin span {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .btn-custom {
+            background-color: #f8e7c1;
+            border: 1px solid #000;
+            color: #000;
+            font-weight: bold;
+        }
+        .btn-custom:hover {
+            background-color: #f8e7c1;
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <!-- Sidebar Start -->
@@ -137,6 +206,39 @@ mysqli_close($conn);
                     echo "</ol>";
                     ?>
                     </p>
+                </div>
+                <div class="card text-center">
+                    <h5>
+                        Yuk foodies, kasih support untuk resep ini
+                    </h5>
+                    <p>
+                        Nominal cepat
+                    </p>
+                    <form method="POST">
+                        <div class="d-flex justify-content-center">
+                            <div class="coin">
+                                <img alt="Coin icon" height="50" src="../images/Koin.png" width="50"/>
+                                <span>10</span>
+                                <input type="radio" name="jumlahKoin" value="10" required>
+                            </div>
+                            <div class="coin">
+                                <img alt="Coin icon" height="50" src="../images/Koin.png" width="50"/>
+                                <span>50</span>
+                                <input type="radio" name="jumlahKoin" value="50" required>
+                            </div>
+                            <div class="coin">
+                                <img alt="Coin icon" height="50" src="../images/Koin.png" width="50"/>
+                                <span>100</span>
+                                <input type="radio" name="jumlahKoin" value="100" required>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="idPenerima" value="1"> <!-- ID penerima, misalnya diambil dari input hidden atau data lain -->
+
+                        <button type="submit" class="btn btn-custom mt-3" name="giveGift">
+                            Berikan Gift
+                        </button>
+                    </form>
                 </div>
             </div>
             <!-- Main Content End -->
