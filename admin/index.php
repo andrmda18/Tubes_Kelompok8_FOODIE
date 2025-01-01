@@ -45,9 +45,10 @@ $query = mysqli_query($conn, $sqlStatment);
         <div class="col-1 p-0 sidebar">
           <ul>
             <li><a href="../logout.php"><img src="../images/LOGO.png" alt="logo" /></li></a>
-            <li><a href="tambahkategori.php"><i class="bi bi-person-fill"></i></a></li>
-            <li><a href="index.php"><i class="bi bi-house-door-fill"></i></a></li>
-            <li><a href="konfirmasitopup.php"><i class="bi bi-bell-fill"></i></a></li>
+            <li><a href="tambahkategori.php"><i class="bi bi-collection"></i></a></li>
+            <li><a href="index.php"><i class="bi bi-folder-check"></i></a></li>
+            <li><a href="konfirmasitopup.php"><i class="bi bi-coin"></i></a></li>
+            <li><a href="konfirmasitarik.php"><i class="bi bi-wallet2"></i></a></li>
           </ul>
         </div>
         <!-- sidebar end -->

@@ -2,7 +2,7 @@
 include "../dbconfig.php";
 
 // Ambil data transaksi yang masih menunggu
-$query = "SELECT * FROM koin WHERE riwayat_transaksi = 'top up' AND status = 'menunggu' ORDER BY idKoin DESC";
+$query = "SELECT * FROM koin WHERE riwayat_transaksi = 'penarikan' AND status = 'menunggu' ORDER BY idKoin DESC";
 $transaksi = mysqli_query($conn, $query);
 
 // Proses validasi top-up
@@ -18,7 +18,7 @@ if (isset($_POST['btnValidasi'])) {
     if (mysqli_query($conn, $updateStatus)) {
         echo "<script>
             alert('Status transaksi berhasil diperbarui!');
-            window.location='konfirmasitopup.php';
+            window.location='konfirmasitarik.php';
         </script>";
     } else {
         echo "<script>alert('Gagal memperbarui status!');</script>";
@@ -31,7 +31,7 @@ if (isset($_POST['btnValidasi'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validasi Top-Up</title>
+    <title>Validasi Penarikan</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -67,7 +67,6 @@ if (isset($_POST['btnValidasi'])) {
                                     <p><strong>Jumlah Koin:</strong> <?= htmlspecialchars($row['jumlahtransaksi']); ?></p>
                                     <p><strong>Jenis Transaksi:</strong> <?= htmlspecialchars($row['riwayat_transaksi']); ?></p>
                                     <p><strong>Bukti Pembayaran:</strong></p>
-                                    <img src="../images/<?= htmlspecialchars($row['buktiPembayaran']) ?>" class="img-fluid mb-3" style="width:50%">
 
                                     <form method="POST">
                                         <input type="hidden" name="idTransaksi" value="<?= htmlspecialchars($row['idKoin']); ?>">
