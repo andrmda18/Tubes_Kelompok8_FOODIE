@@ -27,6 +27,7 @@ if (isset($_POST['idTransaksi'])) {
 
 // Proses upload bukti pembayaran
 if (isset($_POST['btnSimpan'])) {
+    
     $foto = $_FILES['buktiPembayaran'];
     
     // Cek apakah ada file yang diupload
@@ -39,14 +40,14 @@ if (isset($_POST['btnSimpan'])) {
             echo "<script>alert('Hanya file JPG, JPEG, dan PNG yang diperbolehkan!');</script>";
         } else {
             // Buat nama file baru
-            $nama_file = date('YmdHis') . '_' . $foto['name'];
+            $nama_file = time() . '_' . $foto['name'];
             
             // Upload file
             if (move_uploaded_file($foto['tmp_name'], '../images/' . $nama_file)) {
                 // Simpan ke database
                 $riwayat = 'top up';
                 $jumlah_koin = $transaksi['jumlahKoin'];
-                $foto_path = 'images/' . $nama_file;
+                $foto_path = $nama_file;
                 
                 // Query untuk menyimpan data
                 $simpan = mysqli_query($conn, "INSERT INTO koin (riwayat_transaksi, jumlahTransaksi, buktiPembayaran, username, idTransaksi) 

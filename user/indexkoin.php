@@ -79,7 +79,7 @@ $pengguna = mysqli_fetch_assoc(mysqli_query($conn, "SELECT foto, username FROM l
             <!-- User Profile -->
             <div class="d-flex align-items-center">
                 <span class="fw-bold"><?= $pengguna['username']; ?></span>
-                <img src="../images/<?= $pengguna['foto']; ?>" alt="Profile Saya" class="rounded-circle me-2 circle-img">
+                <a href="../logout.php"><img src="../images/<?= $pengguna['foto']; ?>" alt="Profile Saya" class="rounded-circle me-2 circle-img"></a>
             </div>
         </div>
     </header>
@@ -138,6 +138,7 @@ $pengguna = mysqli_fetch_assoc(mysqli_query($conn, "SELECT foto, username FROM l
                 <a href="tarikkoin.php"><button class="btn btn-warning" onclick="withdrawCoins()">Tarik Koin</button></a>
             </div>
         </div>
+        <a href="home.php">Kembali ke Beranda</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
