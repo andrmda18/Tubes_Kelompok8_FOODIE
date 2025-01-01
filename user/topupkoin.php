@@ -1,5 +1,4 @@
 <?php
-// File: topup.php
 session_start();
 include "../dbconfig.php";
 
@@ -12,7 +11,9 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 // Ambil data transaksi
-$query = mysqli_query($conn, "SELECT * FROM transaksi");
+$sqlStatement = "SELECT * FROM transaksi
+                WHERE idTransaksi < 5";
+$query = mysqli_query($conn, $sqlStatement);
 $transaksi = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 $rincianPembayaran = null;
