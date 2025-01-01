@@ -1,18 +1,50 @@
 <?php
+// File: topup.php
 session_start();
 include "../dbconfig.php";
 
-// Pastikan username ada dalam session
-if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username']; // Ambil username dari session
-} else {
-    echo "Username tidak ditemukan!";
+// Cek login
+if (!isset($_SESSION['username'])) {
+    echo "<script>alert('Silakan login terlebih dahulu!'); window.location='login.php';</script>";
     exit();
 }
 
-$sqlStatement = "SELECT * FROM transaksi";
-$query = mysqli_query($conn, $sqlStatement);
+$username = $_SESSION['username'];
+
+// Ambil data transaksi
+$query = mysqli_query($conn, "SELECT * FROM transaksi");
 $transaksi = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+$rincianPembayaran = null;
+
+// Proses pilih jumlah koin
+if (isset($_POST['idTransaksi'])) {
+    $idTransaksi = $_POST['idTransaksi'];
+    
+    // Ambil data transaksi yang dipilih
+    $query = mysqli_query($conn, "SELECT * FROM transaksi WHERE idTransaksi='$idTransaksi'");
+    $rincianPembayaran = mysqli_fetch_array($query);
+    
+    if ($rincianPembayaran) {
+        // Simpan data ke session
+        $_SESSION['idTransaksi'] = $idTransaksi;
+        $_SESSION['jumlahKoin'] = $rincianPembayaran['jumlahKoin'];
+        $_SESSION['hargaKoin'] = $rincianPembayaran['hargaKoin'];
+        $_SESSION['biayaAdmin'] = $rincianPembayaran['biayaAdmin'];
+        $_SESSION['totalPembayaran'] = $rincianPembayaran['hargaKoin'] + $rincianPembayaran['biayaAdmin'];
+    }
+}
+
+// Proses top up
+if (isset($_POST['topUp'])) {
+    if (isset($_SESSION['idTransaksi'])) {
+        $_SESSION['qrisImage'] = '../images/Pembayaran Foodie.png';
+        header('Location: qris.php');
+        exit();
+    } else {
+        echo "<script>alert('Pilih jumlah koin terlebih dahulu!');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,31 +58,43 @@ $transaksi = mysqli_fetch_all($query, MYSQLI_ASSOC);
 <body>
     <div class="container mt-5">
         <h2 class="text-center">Top Up Koin</h2>
-        <p class="text-center">Isi ulang koin Anda</p>
         <div class="card p-4">
             <form method="POST">
                 <div class="mb-3">
-                <label for="jumlahKoin" class="form-label">Jumlah Koin</label>
-                    <select class="form-select" id="idTransaksi" name="idTransaksi" onchange="updateTotal()" required>
-                        <option value="" disabled selected>Pilih jumlah koin</option>
-                        <?php
-                        foreach ($transaksi as $key => $koin) {
-                            $jumlahKoin = $koin['jumlahKoin'];
-                            $hargaKoin = $koin['hargaKoin'];
-                            echo "<option value='{$koin['idTransaksi']}' data-harga='{$hargaKoin}'>Jumlah Koin: {$jumlahKoin} - Harga: Rp " . number_format($hargaKoin, 0, ',', '.') . "</option>";
-                        }         
-                        ?>
+                    <label class="form-label">Jumlah Koin</label>
+                    <select class="form-select" name="idTransaksi" required onchange="this.form.submit()">
+                        <option value="" disabled <?= !isset($_SESSION['idTransaksi']) ? 'selected' : ''; ?>>
+                            Pilih jumlah koin
+                        </option>
+                        <?php foreach ($transaksi as $t): ?>
+                            <option value="<?= $t['idTransaksi'] ?>" 
+                                <?= (isset($_SESSION['idTransaksi']) && $_SESSION['idTransaksi'] == $t['idTransaksi']) ? 'selected' : ''; ?>>
+                                Jumlah Koin: <?= $t['jumlahKoin'] ?> - Harga: Rp <?= number_format($t['hargaKoin'], 0, ',', '.') ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
+
                 <div class="mb-3">
-                    <label for="metodePembayaran" class="form-label">Metode Pembayaran</label>
-                    <select class="form-select" id="metodePembayaran" name="metodePembayaran" required>
+                    <label class="form-label">Metode Pembayaran</label>
+                    <select class="form-select" name="metodePembayaran" required>
                         <option value="qris" selected>QRIS</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Top Up Sekarang</button>
+
+                <?php if (isset($_SESSION['idTransaksi'])): ?>
+                    <div class="mt-4">
+                        <h5>Rincian Pembayaran</h5>
+                        <p>Jumlah Koin: <?= $_SESSION['jumlahKoin'] ?></p>
+                        <p>Harga: Rp <?= number_format($_SESSION['hargaKoin'], 0, ',', '.') ?></p>
+                        <p>Biaya Admin: Rp <?= number_format($_SESSION['biayaAdmin'], 0, ',', '.') ?></p>
+                        <p><strong>Total Pembayaran: Rp <?= number_format($_SESSION['totalPembayaran'], 0, ',', '.') ?></strong></p>
+                    </div>
+                <?php endif; ?>
+
+                <button type="submit" class="btn btn-primary w-100 mt-3" name="topUp">Top Up Sekarang</button>
             </form>
-        </div>        
+        </div>
     </div>
 </body>
 </html>

@@ -49,7 +49,7 @@ $sql = mysqli_query($conn, $sqlQuery);
           <ul>
             <!-- <li><img src="../images/LOGO.png" alt="logo" /></li> -->
             <li>
-              <a href="#profile"><i class="bi bi-person-fill"></i>Profil</a>
+              <a href="../logout.php"><i class="bi bi-person-fill"></i>Profil</a>
             </li>
             <li>
               <a href="home.php"><i class="bi bi-house-door-fill"></i>Beranda</a>

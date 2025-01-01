@@ -10,28 +10,38 @@ if (isset($_SESSION['username'])) {
     exit();
 }
 
-$sqlSaldo = " SELECT username,
-        SUM(CASE WHEN riwayat_transaksi = 'top up' THEN jumlahtransaksi ELSE 0 END) AS total_masuk,
-        SUM(CASE WHEN riwayat_transaksi = 'feedback' THEN jumlahtransaksi ELSE 0 END) AS total_keluar,
-        SUM(CASE WHEN riwayat_transaksi = 'pemberian' THEN jumlahtransaksi ELSE 0 END) AS total_pemberian,
-        SUM(CASE WHEN riwayat_transaksi = 'penarikan' THEN jumlahtransaksi ELSE 0 END) AS total_penarikan,
-        (
+$sqlSaldo = "
+    SELECT 
+        username,
+        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'top up' THEN jumlahtransaksi ELSE 0 END), 0) AS total_masuk,
+        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'feedback' THEN jumlahtransaksi ELSE 0 END), 0) AS total_keluar,
+        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'pemberian' THEN jumlahtransaksi ELSE 0 END), 0) AS total_pemberian,
+        COALESCE(SUM(CASE WHEN riwayat_transaksi = 'penarikan' THEN jumlahtransaksi ELSE 0 END), 0) AS total_penarikan,
+        COALESCE((
             (SUM(CASE WHEN riwayat_transaksi = 'top up' THEN jumlahtransaksi ELSE 0 END) - 
              SUM(CASE WHEN riwayat_transaksi = 'pemberian' THEN jumlahtransaksi ELSE 0 END)) - 
             (SUM(CASE WHEN riwayat_transaksi = 'feedback' THEN jumlahtransaksi ELSE 0 END) + 
              SUM(CASE WHEN riwayat_transaksi = 'penarikan' THEN jumlahtransaksi ELSE 0 END))
-        ) AS saldo
-        FROM koin
-        WHERE username = '$username' AND status = 'berhasil'
-        GROUP BY username";
+        ), 0) AS saldo
+    FROM koin
+    WHERE username = '$username' AND status = 'berhasil'
+    GROUP BY username
+";
+
 $saldo = mysqli_query($conn, $sqlSaldo);
 // Cek apakah ada data yang ditemukan
 if ($saldo && mysqli_num_rows($saldo) > 0) {
-    // Ambil satu baris data
+    // Ambil data saldo
     $saldo = mysqli_fetch_assoc($saldo);
 } else {
-    echo "Data tidak ditemukan untuk username: $username";
-    exit;
+    // Tetapkan saldo sebagai nol jika tidak ada data
+    $saldo = [
+        'total_masuk' => 0,
+        'total_keluar' => 0,
+        'total_pemberian' => 0,
+        'total_penarikan' => 0,
+        'saldo' => 0,
+    ];
 }
 
 $sqlStatement = "SELECT * FROM koin
