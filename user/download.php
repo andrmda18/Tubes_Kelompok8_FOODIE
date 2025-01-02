@@ -107,9 +107,11 @@ $langkahNumber = 1;
 foreach ($langkahList as $langkah) {
     if (!empty(trim($langkah))) {
         $pdf->Cell(5); // Memberikan sedikit indentasi
-        $pdf->Cell(0, 10, $langkahNumber++ . '. ' . trim($langkah), 0, 1); // Menambahkan angka saja
+        // Menggunakan MultiCell agar teks otomatis turun ke baris selanjutnya jika terlalu panjang
+        $pdf->MultiCell(0, 10, $langkahNumber++ . '. ' . trim($langkah), 0, 1); 
     }
 }
+
 
 // Menyimpan file PDF sementara
 $fileName = 'resep_' . strtolower(str_replace(' ', '_', $NamaResep)) . '.pdf';

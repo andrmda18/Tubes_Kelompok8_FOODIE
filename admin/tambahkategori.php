@@ -6,7 +6,7 @@ $message = "";
 
 // Ambil data kategori dan jumlah resep dari database
 $sqlStatement = "
-    SELECT k.namaKategori, k.foto, COUNT(r.IdResep) AS jumlah_resep
+    SELECT k.idkategori, k.namaKategori, k.foto, COUNT(r.IdResep) AS jumlah_resep
     FROM kategori k
     LEFT JOIN tambahresep r ON k.idKategori = r.IdKategori
     WHERE k.idKategori !=0
@@ -104,7 +104,7 @@ if (isset($_POST['btnSimpan'])) {
                   <span><?= htmlspecialchars($row['namaKategori']) ?></span>
                   <span><?= htmlspecialchars($row['jumlah_resep']) ?> Resep</span>
                   <button class="btn btn-success">Edit</button>
-                  <button class="btn btn-danger">Hapus</button>
+                  <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
               <?php endwhile; ?>
             </div>

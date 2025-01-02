@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 
 // Ambil data transaksi
 $sqlStatement = "SELECT * FROM transaksi
-                WHERE idTransaksi < 5";
+                WHERE idTransaksi < 5 AND idTransaksi >= 1";
 $query = mysqli_query($conn, $sqlStatement);
 $transaksi = mysqli_fetch_all($query, MYSQLI_ASSOC);
 

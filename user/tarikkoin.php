@@ -11,7 +11,7 @@ $username = $_SESSION['username'];
 $rincianPembayaran = null;
 
 // Ambil daftar koin dari database
-$query = "SELECT * FROM transaksi WHERE idTransaksi > 4";
+$query = "SELECT * FROM transaksi WHERE idTransaksi > 4 AND idTransaksi <= 8";
 $result = mysqli_query($conn, $query);
 $daftarKoin = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

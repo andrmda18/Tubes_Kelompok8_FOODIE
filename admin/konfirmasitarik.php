@@ -66,7 +66,6 @@ if (isset($_POST['btnValidasi'])) {
                                     <p><strong>Username:</strong> <?= htmlspecialchars($row['username']); ?></p>
                                     <p><strong>Jumlah Koin:</strong> <?= htmlspecialchars($row['jumlahtransaksi']); ?></p>
                                     <p><strong>Jenis Transaksi:</strong> <?= htmlspecialchars($row['riwayat_transaksi']); ?></p>
-                                    <p><strong>Bukti Pembayaran:</strong></p>
 
                                     <form method="POST">
                                         <input type="hidden" name="idTransaksi" value="<?= htmlspecialchars($row['idKoin']); ?>">

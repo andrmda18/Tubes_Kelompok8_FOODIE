@@ -69,7 +69,7 @@ $query = mysqli_query($conn, $sqlStatment);
                   echo '    <div class="card-body">';
                   echo '        <h5 class="fw-bold mb-2">' . htmlspecialchars($row['NamaResep']) . '</h5>';
                   echo '        <div class="d-flex align-items-center gap-2">';
-                  echo '            <img src="../images/' . htmlspecialchars($row['poto']) . '" alt="User Image" class="circle-img" />';
+                  // echo '            <img src="../images/' . htmlspecialchars($row['poto']) . '" alt="User Image" class="circle-img" />';
                   echo '            <span class="username">' . htmlspecialchars($row['username']) . '</span>';
                   echo '        </div>';
                   echo '        <div class="button-container mt-3">';
