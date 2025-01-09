@@ -80,7 +80,9 @@ li a:hover i {
 .card-img-top {
   width: 100%; /* Gambar akan menyesuaikan lebar card */
   height: auto; /* Menjaga proporsi gambar */
-  object-fit: cover; /* Memotong gambar agar pas dalam card */
+  object-fit: cover;
+  aspect-ratio: 1 /1;
+  display: block;
 }
 
 .card {
